@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	  <title>Cal_Trial</title>
+	  <script scr="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"></script>
+	  <link href='http://fonts.googleapis.com/css?family=PT+Sans|Josefin+Sans|Kaushan+Script' rel='stylesheet' type='text/css'>
+	</head>
+<body>
+	<% if user_signed_in? %>
+		<%= link_to 'Sign out', destroy_user_session_path, method::delete  %>
+	<% else %>
+		<%= link_to 'Sign in', new_user_session_path %>
+	<% end %>
+</body>
+</html>
