@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get '/contact', to: 'site#contact', as: 'contact'
 
   resource :calendar, only: [:show], controller: :calendar
-  root to: 'calendar#show'
+  root to: 'users#show'
 
   resources :users do
     resources :profiles

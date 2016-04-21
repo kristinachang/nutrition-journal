@@ -18,6 +18,19 @@
   <div class="col-md-12">
     <%= calendar @date do |date| %>
       <%= date.day %>  
+     
+			<ul>
+			  <% @dailies_by_date.each do |daily| %>
+				  <% if daily.date == date %>
+				    <li><%= link_to daily.name, daily %></li>
+				  <% end %>
+				<% end %>  
+			</ul>
+  	  
     <% end %>
   </div>
 </div>
+
+
+
+
