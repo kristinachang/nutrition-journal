@@ -1,5 +1,3 @@
-DAILIES new.html.erb
-
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -33,17 +31,34 @@ DAILIES new.html.erb
 				</div> <!-- end .navbar-header -->
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="/">Home</a></li>
+	        	<li class="Index"><%=link_to"Home", root_path  %></li>
 						<li><a href="/about">About</a></li>
 						<li><a href="/contact">Contact</a></li>
-						<li><a href="/users/:user_id/profiles">My Profile</a></li>
-						<li><a href="/users/sign_out">Sign Out</a></li>
+						<%if (current_user)  %>
+		          <li class = "Profile"> <%= link_to 'My Profile', user_profiles_path(current_user) %> </li>
+		          <li class = "SignOut"><%= link_to 'Sign out', destroy_user_session_path %> </li>
+	        	<%else  %>
+	          	<li class="SignUp"><%= link_to 'Sign up', new_user_registration_path  %></li>
+	        	<% end  %>
 					</ul>
 				</div> <!-- end .navbar-collapse -->
 			</div> <!-- end .nav-container -->
 		</div> <!-- end .navbar -->
 
-
+		<!-- Jumbotron -->
+		<div class="container">
+			<div class="jumbotron">
+				<h3>Start A New Daily</h3>
+				<br>
+				<%= render 'form' %>
+				<br>
+				<p><a href="/users/:user_id/dailies">View All My Dailies</a></p>
+				<br>
+				<form method="POST" action="/logout?_method=DELETE">
+					<button>Logout</button>
+				</form>
+			</div> <!-- end .jumbotron -->
+		</div> <!-- end .container -->
 
 
 		<!-- Footer -->

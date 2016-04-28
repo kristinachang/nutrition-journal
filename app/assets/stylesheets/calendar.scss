@@ -1,3 +1,20 @@
 // Place all the styles related to the calendar controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.jumbotron-calendar {
+  text-align: center;
+  background-color: #fff;
+  margin-bottom: 50px;
+
+}
+
+.calendar {
+	table-layout: fixed;
+}
+
+th {
+	text-align: center;
+	font-size: 10px;
+	font-size: 1vw; 
+}

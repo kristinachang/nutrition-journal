@@ -1,0 +1,40 @@
+<%= form_for [current_user, @daily] do |f| %>
+ 
+  <% if @daily.errors.any? %>
+    <div id="error_explanation">
+
+      <h2>
+        <%= pluralize(@daily.errors.count, "error") %> prohibited
+        this daily from being saved:
+      </h2>
+      <ul>
+        <% @daily.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= f.date_field :date %>
+    <br>
+    <%= f.label :date %>   
+  </p>
+  
+  <p>
+    <%= f.number_field :mood %>
+    <br>
+    <%= f.label :mood %>
+  </p>
+  
+  <p>
+    <%= f.text_field :notes %>
+    <br>
+    <%= f.label :notes %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+ 
+<% end %>

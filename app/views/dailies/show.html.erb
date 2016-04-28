@@ -1,5 +1,3 @@
-DAILIES show.html.erb
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -33,144 +31,154 @@ DAILIES show.html.erb
         </div> <!-- end .navbar-header -->
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="/">Home</a></li>
+            <li class="Index"><%=link_to"Home", root_path  %></li>
             <li><a href="/about">About</a></li>
             <li><a href="/contact">Contact</a></li>
-            <li><a href="/users/:user_id/profiles">My Profile</a></li>
-            <li><a href="/users/sign_out">Sign Out</a></li>
+            <%if (current_user)  %>
+              <li class = "Profile"> <%= link_to 'My Profile', user_profiles_path(current_user) %> </li>
+              <li class = "SignOut"><%= link_to 'Sign out', destroy_user_session_path %> </li>
+            <%else  %>
+              <li class="SignUp"><%= link_to 'Sign up', new_user_registration_path  %></li>
+            <% end  %>
           </ul>
         </div> <!-- end .navbar-collapse -->
       </div> <!-- end .nav-container -->
     </div> <!-- end .navbar -->
 
+    <!-- CONTENT -->
+    <div class="container">
+    <!-- consider ability to add items by updating this page.  -->
+    <!-- need to modify logic and data here to display items eaten by time and totals -->
+      <h2>Daily Entry for: <%= @daily.date %></h2>
+      <br><br>
+      <!-- Display morning data  -->          
+      <table id='datatable' cellspacing="0" class="table table-striped">
+        <thead>
+          <tr>
+            <th id="head" scope="col" class="nobg" style="width:50%">Morning</th>
+            <th id='h-alt' scope="col" style="width:12%">kcal</th>
+            <th id='h-alt' scope="col" style="width:12%">carb</th>
+            <th id='h-alt' scope="col" style="width:12%">protein</th>
+            <th id='h-alt' scope="col" style="width:12%">fat</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% kcal = 0 %> <% carb = 0 %> <% protein = 0 %> <% fat = 0 %>
+          <% @daily.items.each do |item| %>
+            <tr>
+              <td class='name'><%= item[:name] %></td>
 
+              <td><%= item[:kcal] %></td>
+              <% kcal += item[:kcal] %>
 
-          <h2>Nutrition Log</h2>
+              <td><%= item[:carb] %></td>
+              <% carb += item[:carb] %>
 
-            <p>Your logged food will display below.</p> 
- 
-          <!-- Display morning data  -->          
-                <table id='datatable' cellspacing="0" class="table table-striped">
-                  <thead>
-                    <tr >
-                      <th id="head" scope="col" class="nobg" style="width:50%">Morning</th>
-                      <th id='h-alt' scope="col" style="width:12%">cal</th>
-                      <th id='h-alt' scope="col" style="width:12%">carb</th>
-                      <th id='h-alt' scope="col" style="width:12%">prot</th>
-                      <th id='h-alt' scope="col" style="width:12%">fat</th>
-                    </tr>
-                  </thead>
-                <tbody>
-                    <% cal = 0 %> <% carb = 0 %> <% prot = 0 %> <% fat = 0 %>
-                    <% @food_morning.each do |food| %>
-                    
-                      <tr>
-                        <td class='name'><%= food[:name] %></td>
-                        <td><%= food[:calories] %></td>
-                        <% cal += food[:calories] %>
+              <td><%= item[:protein] %></td>
+              <% protein += item[:protein] %>
 
-                        <td><%= food[:carbs] %></td>
-                        <% carb += food[:carbs] %>
+              <td><%= item[:fat] %></td>
+              <% fat += item[:fat] %>  
+            </tr>
+          <% end %>
 
-                        <td><%= food[:protein] %></td>
-                        <% prot += food[:protein] %>
+            <tr>      
+              <td class='name' style='font-weight:bold;'>My totals</td>
+              <td><%= kcal %></td>
+              <td><%= carb %></td>
+              <td><%= protein %></td>
+              <td><%= fat %></td>
+            </tr>
+        </tbody>
+      </table>
 
-                        <td><%= food[:fat] %></td>
-                        <% fat += food[:fat] %>
-                        
-                      </tr>
-                    <% end %>
-                      <tr>      
-                        <td class='name' style='font-weight:bold;'>My totals</td>
-                        <td><%= cal %></td>
-                        <td><%= carb %></td>
-                        <td><%= prot %></td>
-                        <td><%= fat %></td>
-                      </tr>
-                  </tbody>
-                </table>
+      <!-- Display Midday data -->
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col" abbr="Configurations" class="nobg" style="width:50%" >Midday</th>
+            <th id='h-alt' scope="col" style="width:12%">kcal</th>
+            <th id='h-alt' scope="col" style="width:12%">carb</th>
+            <th id='h-alt' scope="col" style="width:12%">protein</th>
+            <th id='h-alt' scope="col" style="width:12%">fat</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% kcal = 0 %> <% carb = 0 %> <% protein = 0 %> <% fat = 0 %>
+          <% @daily.items.each do |item| %>
+            <tr>
+              <td class='name'><%= item[:name] %></td>
+              <td><%= item[:kcal] %></td>
+              <% kcal += item[:kcal] %>
 
-          <!-- Display Midday data -->
-                <table class="table table-striped">
-                  <thead>
-                    <tr>
-                      <th scope="col" abbr="Configurations" class="nobg" style="width:50%" >Midday</th>
-                      <th id='h-alt' scope="col" style="width:12%">cal</th>
-                      <th id='h-alt' scope="col" style="width:12%">carb</th>
-                      <th id='h-alt' scope="col" style="width:12%">prot</th>
-                      <th id='h-alt' scope="col" style="width:12%">fat</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <% cal = 0 %> <% carb = 0 %> <% prot = 0 %> <% fat = 0 %>
-                    <% @food_midday.each do |food| %>
-                    
-                      <tr>
-                        <td class='name'><%= food[:name] %></td>
-                        <td><%= food[:calories] %></td>
-                        <% cal += food[:calories] %>
+              <td><%= item[:carb] %></td>
+              <% carb += item[:carb] %>
 
-                        <td><%= food[:carbs] %></td>
-                        <% carb += food[:carbs] %>
+              <td><%= item[:protein] %></td>
+              <% protein += item[:protein] %>
 
-                        <td><%= food[:protein] %></td>
-                        <% prot += food[:protein] %>
+              <td><%= item[:fat] %></td>
+              <% fat += item[:fat] %>
+            </tr>
+          <% end %>
 
-                        <td><%= food[:fat] %></td>
-                        <% fat += food[:fat] %>
-                        
-                      </tr>
-                    <% end %>
-                      <tr>      
-                        <td class='name' style='font-weight:bold;'>My totals</td>
-                        <td><%= cal %></td>
-                        <td><%= carb %></td>
-                        <td><%= prot %></td>
-                        <td><%= fat %></td>
-                      </tr>
-                  </tbody>
-                </table>
+            <tr>      
+              <td class='name' style='font-weight:bold;'>My totals</td>
+              <td><%= kcal %></td>
+              <td><%= carb %></td>
+              <td><%= protein %></td>
+              <td><%= fat %></td>
+            </tr>
+        </tbody>
+      </table>
 
-          <!-- Display Evening data -->
-                <table class="table table-striped">
-                  <thead>
-                    <tr>
-                      <th scope="col" abbr="Configurations" class="nobg" style="width:50%" >Evening</th>
-                      <th id='h-alt' scope="col" style="width:12%">cal</th>
-                      <th id='h-alt' scope="col" style="width:12%">carb</th>
-                      <th id='h-alt' scope="col" style="width:12%">prot</th>
-                      <th id='h-alt' scope="col" style="width:12%">fat</th>
-                    </tr>
-                  </thead>
-                    <% cal = 0 %> <% carb = 0 %> <% prot = 0 %> <% fat = 0 %>
-                    <% @food_evening.each do |food| %>
-                    
-                      <tr>
-                        <td class='name'><%= food[:name] %></td>
-                        <td><%= food[:calories] %></td>
-                        <% cal += food[:calories] %>
+      <!-- Display Evening data -->
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col" abbr="Configurations" class="nobg" style="width:50%" >Evening</th>
+            <th id='h-alt' scope="col" style="width:12%">kcal</th>
+            <th id='h-alt' scope="col" style="width:12%">carb</th>
+            <th id='h-alt' scope="col" style="width:12%">protein</th>
+            <th id='h-alt' scope="col" style="width:12%">fat</th>
+          </tr>
+        </thead>
+          <% kcal = 0 %> <% carb = 0 %> <% protein = 0 %> <% fat = 0 %>
+          <% @daily.items.each do |item| %>
+            <tr>
+              <td class='name'><%= item[:name] %></td>
+              <td><%= item[:kcal] %></td>
+              <% kcal += item[:kcal] %>
 
-                        <td><%= food[:carbs] %></td>
-                        <% carb += food[:carbs] %>
+              <td><%= item[:carb] %></td>
+              <% carb += item[:carb] %>
 
-                        <td><%= food[:protein] %></td>
-                        <% prot += food[:protein] %>
+              <td><%= item[:protein] %></td>
+              <% protein += item[:protein] %>
 
-                        <td><%= food[:fat] %></td>
-                        <% fat += food[:fat] %>
-                        
-                      </tr>
-                    <% end %>
-                      <tr>      
-                        <td class='name' style='font-weight:bold;'>My totals</td>
-                        <td><%= cal %></td>
-                        <td><%= carb %></td>
-                        <td><%= prot %></td>
-                        <td><%= fat %></td>
-                      </tr>
-                </table>
+              <td><%= item[:fat] %></td>
+              <% fat += item[:fat] %>
+            </tr>
+          <% end %>
 
+            <tr>      
+              <td class='name' style='font-weight:bold;'>My totals</td>
+              <td><%= kcal %></td>
+              <td><%= carb %></td>
+              <td><%= protein %></td>
+              <td><%= fat %></td>
+            </tr>
+      </table>
 
+      <br><br>
+        <%= link_to "Add Items For This Day", new_user_daily_item_path(current_user, @daily, @item) %>
+      <br>
+        <a href="/users/:user_id/dailies">Back to the Calendar</a> <!-- users/show.html.erb -->
+      <br><br>     
+      <form method="POST" action="/logout?_method=DELETE">
+        <button>Logout</button>
+      </form>
+    </div> <!-- end .container -->
 
     <!-- Footer -->
     <div class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">

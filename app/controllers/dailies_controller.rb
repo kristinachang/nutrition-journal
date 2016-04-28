@@ -1,15 +1,21 @@
 class DailiesController < ApplicationController
+
+	# before_action :authenticate_user!
+
 	def index
-		@daily=Daily.new
+		@user = current_user
 		@date = params[:date] ? Date.parse(params[:date]) : Date.today
   		@dailies_by_date = Daily.all(&:date)
 	end
 
 	def new
+		@user = current_user
+		@daily = Daily.new
 	end
 
 	def create
-		@daily=current_user.dailies.new(daily_params)
+		@user = current_user
+		@daily = @user.dailies.new(daily_params)
 		if @daily.save
 			redirect_to user_daily_path(current_user, @daily)
 		else
@@ -18,12 +24,19 @@ class DailiesController < ApplicationController
 	end
 
 	def show
-		@daily=Daily.find(params[:id])
-		@item=Item.all
+		@user = current_user
+		@date = params[:date] ? Date.parse(params[:date]) : Date.today
+		@daily = Daily.find(params[:id])
+		@dailies_by_date = Daily.all(&:date)
+		@item = Item.all
+
+		#need logic here to display items eaten by time and item data.
+
 	end
 
 	def edit
-		@daily=Daily.find(params[:id])
+		@user = current_user
+		@daily = Daily.find(params[:id])
 	end
 
 	def update
@@ -38,7 +51,7 @@ class DailiesController < ApplicationController
 
 	private
 		def daily_params
-			params.require(:daily).permit(:date)
+			params.require(:daily).permit(:date, :date_eaten, :mood, :notes, :morning_total, :midday_total, :evening_total, :day_total)
 		end
 	
 end
