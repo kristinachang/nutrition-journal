@@ -1,5 +1,3 @@
-ITEMS show.html.erb
-
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -9,13 +7,13 @@ ITEMS show.html.erb
 		<title>Item</title>
 
 		<!-- Bootstrap core CSS -->
-    <link type="text/css" rel="stylesheet" href="/stylesheets/bootstrap.min.css">
-    <!-- Custom styles for this template -->
-    <link type="text/css" rel="stylesheet" href="/stylesheets/style.css">
-		<!-- <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"> -->
-		<!-- <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css"> -->
+	    <!-- <link type="text/css" rel="stylesheet" href="/stylesheets/bootstrap.min.css"> -->
+	    <!-- Custom styles for this template -->
+	    <!-- <link type="text/css" rel="stylesheet" href="/stylesheets/style.css"> -->
+		<link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+		<link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
 		<link type="text/css" rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-		<!-- <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Playfair+Display:400,700,400italic"> -->
+		<link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Playfair+Display:400,700,400italic">
 	</head>
 
 	<body>
@@ -47,7 +45,82 @@ ITEMS show.html.erb
 			</div> <!-- end .nav-container -->
 		</div> <!-- end .navbar -->
 
+    	<!-- CONTENT -->
+		<div class="container">
 
+			<p>
+				<strong>Time:</strong>
+				<%= @item.time %>
+			</p>
+
+			<p>
+				<strong>Mood:</strong>
+				<%= @item.mood %>
+			</p>
+
+			<p>
+				<strong>Notes:</strong>
+				<%= @item.notes %>
+			</p>
+
+			<p>
+				<strong>Food Item:</strong>
+				<%= @item.name %>
+			</p>
+
+			<p>
+				<strong>Calories:</strong>
+				<%= @item.kcal %> kcal
+			</p>
+
+			<p>
+				<strong>Proteins:</strong>
+				<%= @item.protein %> g
+			</p>
+
+			<p>
+				<strong>Carbohydrates:</strong>
+				<%= @item.carb %> g
+			</p>
+
+			<p>
+				<strong>Fats:</strong>
+				<%= @item.fat %> g
+			</p>
+
+			<p>
+				<%= form_for user_daily_item_path, :method => 'get' do %>
+					<%= label_tag(:q, "Search for food:") %> <br>
+					<%= text_field_tag(:q) %>
+					<%= submit_tag("Search") %>
+				<% end %>
+			</p>
+
+			<p>
+				<% if @foods.present? %>
+					<table>
+						<% @foods.each do |f| %>
+							<tr>
+								<td>
+									<%= f["name"] %>
+								</td>
+								<td>
+									<%= form_for user_daily_item_path, :method => 'PUT' do %>
+										<%= hidden_field(nil, :ndbno, value: f["ndbno"]) %>
+										<%= submit_tag("Add to Item") %>
+									<% end %>
+								</td>
+							</tr>
+						<% end %>
+					</table>
+				<% end %>
+			</p>
+
+			<%= link_to "Back to Daily", user_daily_path(current_user, @daily) %>
+			<p><a href="/users/:user_id/dailies">Back to Calendar</a></p>
+			<p><a href="/users/index">Back to My Dashboard</a></p>
+
+		</div> <!-- end .container -->
 
 
 		<!-- Footer -->
@@ -68,7 +141,7 @@ ITEMS show.html.erb
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
-		<script src="/stylesheets/bootstrap.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 
 	</body>
 </html>

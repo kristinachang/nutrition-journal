@@ -7,13 +7,13 @@
 		<title>New Item</title>
 
 		<!-- Bootstrap core CSS -->
-    <link type="text/css" rel="stylesheet" href="/stylesheets/bootstrap.min.css">
-    <!-- Custom styles for this template -->
-    <link type="text/css" rel="stylesheet" href="/stylesheets/style.css">
-		<!-- <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"> -->
-		<!-- <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css"> -->
+	    <!-- <link type="text/css" rel="stylesheet" href="/stylesheets/bootstrap.min.css"> -->
+	    <!-- Custom styles for this template -->
+	    <!-- <link type="text/css" rel="stylesheet" href="/stylesheets/style.css"> -->
+		<link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+		<link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
 		<link type="text/css" rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-		<!-- <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Playfair+Display:400,700,400italic"> -->
+		<link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Playfair+Display:400,700,400italic">
 	</head>
 
 	<body>
@@ -50,42 +50,45 @@
 			<div class="jumbotron">
 				<h3>Add New Item</h3>
 				<br>
-				<p>
+				<%= render 'form' %>
+				<br>
+				<br>
+				<!-- <p>
 					<%= form_for [current_user, @daily, @item] do %>
 					<%= time_field_tag :time %>
   					<br>
   					<%= label_tag :time %>
   					<% end %>
-				</p>
+				</p> -->
 
-				<p>
+				<!-- <p>
 					<%= form_for [current_user, @daily, @item] do %>
 					<%= number_field_tag :mood %>
   					<br>
   					<%= label_tag :mood %>
   					<% end %>
-				</p>
+				</p> -->
 
-				<p>
+				<!-- <p>
 					<%= form_for [current_user, @daily, @item] do %>
 					<%= text_field_tag :notes %>
   					<br>
   					<%= label_tag :notes %>
   					<% end %>
-				</p>
+				</p> -->
 
-				<p>
+				<!-- <p>
 				    <%= form_for new_user_daily_item_path, :method => 'get' do %>
 				      <%= label_tag(:q, "Search for food:") %> <br>
 				      <%= text_field_tag(:q) %>
 				      <%= submit_tag("Search") %>
 				    <% end %>
-				</p>
+				</p> -->
 
-				<p>
-					<% if @items.present? %>
+				<!-- <p>
+					<% if @foods.present? %>
 					<table>
-						<% @items.each do |f| %>
+						<% @foods.each do |f| %>
 							<tr>
 								<td>
 									<%= f["name"] %>
@@ -100,7 +103,7 @@
 						<% end %>
 					</table>
 					<% end %>
-				</p>
+				</p> -->
 
 				<p><a href="/users/:user_id/dailies">Back to Calendar</a></p>
 				<p><a href="/users/index">Back to My Dashboard</a></p>
@@ -130,7 +133,7 @@
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
-		<script src="/stylesheets/bootstrap.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 
 	</body>
 </html>

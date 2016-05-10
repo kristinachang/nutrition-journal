@@ -2,6 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.jumbotron-calendar {
+  text-align: center;
+  background-color: #fff;
+  margin-bottom: 50px;
+}
+
 th {
 	color: #ffa500;
 	border-right: 1px solid #C1DAD7;
@@ -9,9 +15,9 @@ th {
 	border-top: 1px solid #C1DAD7;
 	letter-spacing: 2px;
 	text-transform: uppercase;
-	text-align: left;
+	text-align: center;
 	padding: 6px 6px 6px 12px;
-	background: #CAE8EA url(images/bg_header.jpg) no-repeat;
+	background: #CAE8EA no-repeat;
 }
 
 #h-alt {

@@ -6,7 +6,6 @@
   text-align: center;
   background-color: #fff;
   margin-bottom: 50px;
-
 }
 
 .calendar {
@@ -14,7 +13,11 @@
 }
 
 th {
-	text-align: center;
+	align: center;
 	font-size: 10px;
 	font-size: 1vw; 
+}
+
+tr {
+	text-align: center;
 }
