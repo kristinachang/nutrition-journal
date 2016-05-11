@@ -47,10 +47,15 @@
 
     	<!-- CONTENT -->
 		<div class="container">
+			
+			<p>
+				<strong>Date:</strong>
+				<%= @item.date %>
+			</p>
 
 			<p>
 				<strong>Time:</strong>
-				<%= @item.time %>
+				<%= @item.time.strftime("%H:%M") %>
 			</p>
 
 			<p>

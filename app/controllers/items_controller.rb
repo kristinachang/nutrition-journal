@@ -6,6 +6,18 @@ class ItemsController < ApplicationController
 		@user = current_user
 		@daily = Daily.find(params[:daily_id])
 		@items = Item.all
+		@date = params[:date] ? Date.parse(params[:date]) : Date.today
+		@dailies_by_date = Daily.all(&:date)
+		@items_by_date = Item.all(&:date)
+
+		item_time = item_params[:time] 
+		item_date = item_params[:date]
+		#puts time
+		@item.time = item_time
+		@item.date = item_date
+		#puts @item.time # ==> 2000-01-01 10:15:00 UTC
+
+
 	end
 
 	def new
@@ -38,6 +50,10 @@ class ItemsController < ApplicationController
 	def create
 		@daily=Daily.find(params[:daily_id])
 		@item = @daily.items.new(item_params)
+		time = item_params[:time] 
+		#puts time
+		@item.time = time
+		#puts @item.time # ==> 2000-01-01 10:15:00 UTC
 
 	 #    Add the following when implementing search function on /new.
 	 #    if params[:ndbno].present?
@@ -154,7 +170,7 @@ class ItemsController < ApplicationController
 
 	private
 		def item_params
-			params.require(:item).permit(:time, :name, :mood, :notes)
+			params.require(:item).permit(:date, :time, :time_eaten, :name, :ndbno, :protein, :fat, :carb, :kcal, :unit, :mood, :notes)
 		end
 	
 end

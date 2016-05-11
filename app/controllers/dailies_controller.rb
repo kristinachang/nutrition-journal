@@ -28,9 +28,26 @@ class DailiesController < ApplicationController
 		@date = params[:date] ? Date.parse(params[:date]) : Date.today
 		@daily = Daily.find(params[:id])
 		@dailies_by_date = Daily.all(&:date)
-		@item = Item.all
+		@items = Item.all
 
 		#need logic here to display items eaten by time and item data.
+		@morning_total = []
+		@midday_total = []
+		@evening_total = []
+		@day_total = []
+
+		@daily.items.each do |item|
+			if (item.time_eaten.day == @daily.day)
+				if (item.time_eaten.hour.between?(0,11.5))
+					@morning_total << {'time_eaten': item.time_eaten, 'name': item.name, 'kcal': item.kcal, 'protein': item.protein, 'carb': item.carb, 'fat': item.fat}
+				elsif (item.time_eaten.hour.between?(11.6,17.5))
+					@midday_total << {'time_eaten': item.time_eaten, 'name': item.name, 'kcal': item.kcal, 'protein': item.protein, 'carb': item.carb, 'fat': item.fat}
+				else (item.time_eaten.hour.between?(17.6,23.9))
+					@evening_total << {'time_eaten': item.time_eaten, 'name': item.name, 'kcal': item.kcal, 'protein': item.protein, 'carb': item.carb, 'fat': item.fat}
+				end
+			end
+		end
+
 
 	end
 

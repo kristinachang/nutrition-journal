@@ -16,9 +16,15 @@
   <% end %>
 
   <p>
-  	<%= f.time_field :time  %>
+  	<%= f.date_field :date  %>
   	<br>
-  	<%= f.label "Time Eaten"  %>
+  	<%= f.label :date  %>
+  </p>
+
+  <p>
+    <%= f.time_field :time  %>
+    <br>
+    <%= f.label :time  %>
   </p>
 
   <p>

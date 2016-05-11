@@ -48,9 +48,12 @@
 		<!-- CONTENT -->
 		<div class="container">
 
-			<h3>Date:</h3>
+			<h3>Date: <%= @daily.date %></h3>
+
 			<br>
+
 			<% @items.each do |item| %>
+			<% if @item.date == @daily.date %>
 				<p>Time: <%= item.time %></p>
 				<p>Food Item: <%= item.name %>
 					<button><%= link_to 'Show', user_daily_item_path(current_user, @daily, item) %></button>
@@ -63,7 +66,8 @@
 				<p>Carbs: <%= item.carb %> g</p>
 				<p>Fat: <%= item.fat %> g</p>
 			<br>
-			<%end  %>
+			<% end %>
+			<% end %>
 
 		</div> <!-- end .container -->	
 
