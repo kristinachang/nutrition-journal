@@ -51,6 +51,8 @@
     <!-- need to modify logic and data here to display items eaten by time and totals -->
       <h2>Daily Entry for: <%= @daily.date %></h2>
       <br><br>
+        <canvas id="canvasPie" width="400" height="200"></canvas>
+      <br><br>
       <!-- Display morning data  -->          
       <table id='datatable' cellspacing="0" class="table table-striped">
         <thead>
@@ -186,7 +188,20 @@
         </tbody>
       </table>
 
-      <br><br>
+      <!-- Display Daily Totals data -->
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col" abbr="Configurations" class="nobg" style="width:50%" >Daily Totals</th>
+            <th id='h-alt' scope="col" style="width:12%"><%= @kcal.round(2) %>g</th>
+            <th id='h-alt' scope="col" style="width:12%"><%= @carb.round(2) %>g</th>
+            <th id='h-alt' scope="col" style="width:12%"><%= @protein.round(2) %>g</th>
+            <th id='h-alt' scope="col" style="width:12%"><%= @fat.round(2) %>g</th>
+          </tr>
+        </thead>
+      </table>
+
+      <br>
         <%= link_to "Add Items For This Day", new_user_daily_item_path(current_user, @daily, @item) %>
       <br>
         <a href="/users/:user_id/dailies">Back to the Calendar</a> <!-- users/show.html.erb -->

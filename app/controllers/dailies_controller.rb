@@ -52,11 +52,18 @@ class DailiesController < ApplicationController
 				else (item.time.strftime("%H:%M").between?("17:31","23.59"))
 					@evening_total << {'time': item.time.strftime("%H:%M"), 'name': item.name, 'kcal': item.kcal, 'protein': item.protein, 'carb': item.carb, 'fat': item.fat}
 				end
+				@day_total << {'kcal': item.kcal, 'protein': item.protein, 'carb': item.carb, 'fat': item.fat}
+				@kcal += item.kcal.to_f
+				@protein += item.protein.to_f
+				@carb += item.carb.to_f
+				@fat += item.fat.to_f
 			end
 		end
 		#puts @morning_total
 		#puts @midday_total
 		#puts @evening_total
+		#puts @day_total
+		#puts @kcal
 
 	end
 
