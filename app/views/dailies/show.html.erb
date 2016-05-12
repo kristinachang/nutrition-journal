@@ -64,31 +64,35 @@
         </thead>
         <tbody>
           <% kcal = 0 %> <% carb = 0 %> <% protein = 0 %> <% fat = 0 %>
-          <% @daily.items.each do |item| %>
-            <tr>
-              <td class='name'><%= item[:name] %></td>
+          <% @items.each do |item| %>
+            <% if item.date == @daily.date %>
+              <% if (item.time.strftime("%H:%M").between?("00:00","11.30")) %>
+                <tr>
+                  <td class='name'><%= item[:name] %></td>
 
-              <td><%= item[:kcal] %></td>
-              <% kcal += item[:kcal] %>
+                  <td><%= item[:kcal] %>g</td>
+                  <% kcal += item[:kcal].to_f %>
 
-              <td><%= item[:carb] %></td>
-              <% carb += item[:carb] %>
+                  <td><%= item[:carb] %>g</td>
+                  <% carb += item[:carb].to_f %>
 
-              <td><%= item[:protein] %></td>
-              <% protein += item[:protein] %>
+                  <td><%= item[:protein] %>g</td>
+                  <% protein += item[:protein].to_f %>
 
-              <td><%= item[:fat] %></td>
-              <% fat += item[:fat] %>  
-            </tr>
+                  <td><%= item[:fat] %>g</td>
+                  <% fat += item[:fat].to_f %>  
+                </tr>
+              <% end %>
+            <% end %>
           <% end %>
+          <tr>      
+            <td class='name' style='font-weight:bold;'>Morning totals</td>
 
-            <tr>      
-              <td class='name' style='font-weight:bold;'>My totals</td>
-              <td><%= kcal %></td>
-              <td><%= carb %></td>
-              <td><%= protein %></td>
-              <td><%= fat %></td>
-            </tr>
+            <td><%= kcal.round(2) %>g</td>
+            <td><%= carb.round(2) %>g</td>
+            <td><%= protein.round(2) %>g</td>
+            <td><%= fat.round(2) %>g</td>
+          </tr>
         </tbody>
       </table>
 
@@ -105,30 +109,35 @@
         </thead>
         <tbody>
           <% kcal = 0 %> <% carb = 0 %> <% protein = 0 %> <% fat = 0 %>
-          <% @daily.items.each do |item| %>
-            <tr>
-              <td class='name'><%= item[:name] %></td>
-              <td><%= item[:kcal] %></td>
-              <% kcal += item[:kcal] %>
+          <% @items.each do |item| %>
+            <% if item.date == @daily.date %>
+              <% if (item.time.strftime("%H:%M").between?("11:31","17.30")) %>
+                <tr>
+                  <td class='name'><%= item[:name] %></td>
 
-              <td><%= item[:carb] %></td>
-              <% carb += item[:carb] %>
+                  <td><%= item[:kcal] %>g</td>
+                  <% kcal += item[:kcal].to_f %>
 
-              <td><%= item[:protein] %></td>
-              <% protein += item[:protein] %>
+                  <td><%= item[:carb] %>g</td>
+                  <% carb += item[:carb].to_f %>
 
-              <td><%= item[:fat] %></td>
-              <% fat += item[:fat] %>
-            </tr>
+                  <td><%= item[:protein] %>g</td>
+                  <% protein += item[:protein].to_f %>
+
+                  <td><%= item[:fat] %>g</td>
+                  <% fat += item[:fat].to_f %>
+                </tr>
+              <% end %>
+            <% end %>
           <% end %>
+          <tr>      
+            <td class='name' style='font-weight:bold;'>Midday totals</td>
 
-            <tr>      
-              <td class='name' style='font-weight:bold;'>My totals</td>
-              <td><%= kcal %></td>
-              <td><%= carb %></td>
-              <td><%= protein %></td>
-              <td><%= fat %></td>
-            </tr>
+            <td><%= kcal.round(2) %>g</td>
+            <td><%= carb.round(2) %>g</td>
+            <td><%= protein.round(2) %>g</td>
+            <td><%= fat.round(2) %>g</td>
+          </tr>
         </tbody>
       </table>
 
@@ -143,31 +152,38 @@
             <th id='h-alt' scope="col" style="width:12%">fat</th>
           </tr>
         </thead>
+        <tbody>
           <% kcal = 0 %> <% carb = 0 %> <% protein = 0 %> <% fat = 0 %>
-          <% @daily.items.each do |item| %>
-            <tr>
-              <td class='name'><%= item[:name] %></td>
-              <td><%= item[:kcal] %></td>
-              <% kcal += item[:kcal] %>
+          <% @items.each do |item| %>
+            <% if item.date == @daily.date %>
+              <% if (item.time.strftime("%H:%M").between?("17:31","23.59")) %>
+                <tr>
+                  <td class='name'><%= item[:name] %></td>
 
-              <td><%= item[:carb] %></td>
-              <% carb += item[:carb] %>
+                  <td><%= item[:kcal] %>g</td>
+                  <% kcal += item[:kcal].to_f %>
 
-              <td><%= item[:protein] %></td>
-              <% protein += item[:protein] %>
+                  <td><%= item[:carb] %>g</td>
+                  <% carb += item[:carb].to_f %>
 
-              <td><%= item[:fat] %></td>
-              <% fat += item[:fat] %>
-            </tr>
+                  <td><%= item[:protein] %>g</td>
+                  <% protein += item[:protein].to_f %>
+
+                  <td><%= item[:fat] %>g</td>
+                  <% fat += item[:fat].to_f %>
+                </tr>
+              <% end %>
+            <% end %>  
           <% end %>
+          <tr>      
+            <td class='name' style='font-weight:bold;'>Evening totals</td>
 
-            <tr>      
-              <td class='name' style='font-weight:bold;'>My totals</td>
-              <td><%= kcal %></td>
-              <td><%= carb %></td>
-              <td><%= protein %></td>
-              <td><%= fat %></td>
-            </tr>
+            <td><%= kcal.round(2) %>g</td>
+            <td><%= carb.round(2) %>g</td>
+            <td><%= protein.round(2) %>g</td>
+            <td><%= fat.round(2) %>g</td>
+          </tr>
+        </tbody>
       </table>
 
       <br><br>

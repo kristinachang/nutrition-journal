@@ -31,23 +31,32 @@ class DailiesController < ApplicationController
 		@items = Item.all
 
 		#need logic here to display items eaten by time and item data.
+		@kcal = 0
+		@protein = 0
+		@carb = 0 
+		@fat =0
+
 		@morning_total = []
 		@midday_total = []
 		@evening_total = []
 		@day_total = []
 
-		@daily.items.each do |item|
-			if (item.time_eaten.day == @daily.day)
-				if (item.time_eaten.hour.between?(0,11.5))
-					@morning_total << {'time_eaten': item.time_eaten, 'name': item.name, 'kcal': item.kcal, 'protein': item.protein, 'carb': item.carb, 'fat': item.fat}
-				elsif (item.time_eaten.hour.between?(11.6,17.5))
-					@midday_total << {'time_eaten': item.time_eaten, 'name': item.name, 'kcal': item.kcal, 'protein': item.protein, 'carb': item.carb, 'fat': item.fat}
-				else (item.time_eaten.hour.between?(17.6,23.9))
-					@evening_total << {'time_eaten': item.time_eaten, 'name': item.name, 'kcal': item.kcal, 'protein': item.protein, 'carb': item.carb, 'fat': item.fat}
+		@items.each do |item|
+			if (item.date == @daily.date)
+				if (item.time.strftime("%H:%M").between?("00:00","11:30"))
+					@morning_total << {'time': item.time.strftime("%H:%M"), 'name': item.name, 'kcal': item.kcal, 'protein': item.protein, 'carb': item.carb, 'fat': item.fat}
+					#puts item.time
+				elsif (item.time.strftime("%H:%M").between?("11:31","17:30"))
+					@midday_total << {'time': item.time.strftime("%H:%M"), 'name': item.name, 'kcal': item.kcal, 'protein': item.protein, 'carb': item.carb, 'fat': item.fat}
+					#puts item.time
+				else (item.time.strftime("%H:%M").between?("17:31","23.59"))
+					@evening_total << {'time': item.time.strftime("%H:%M"), 'name': item.name, 'kcal': item.kcal, 'protein': item.protein, 'carb': item.carb, 'fat': item.fat}
 				end
 			end
 		end
-
+		#puts @morning_total
+		#puts @midday_total
+		#puts @evening_total
 
 	end
 

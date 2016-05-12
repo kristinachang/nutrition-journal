@@ -6,15 +6,15 @@ class ItemsController < ApplicationController
 		@user = current_user
 		@daily = Daily.find(params[:daily_id])
 		@items = Item.all
-		@date = params[:date] ? Date.parse(params[:date]) : Date.today
-		@dailies_by_date = Daily.all(&:date)
-		@items_by_date = Item.all(&:date)
+		#@date = params[:date] ? Date.parse(params[:date]) : Date.today
+		#@dailies_by_date = Daily.all(&:date)
+		#@items_by_date = Item.all(&:date)
 
-		item_time = item_params[:time] 
-		item_date = item_params[:date]
+		#item_time = item_params[:time] 
+		#item_date = item_params[:date]
 		#puts time
-		@item.time = item_time
-		@item.date = item_date
+		#@item.time = item_time
+		#@item.date = item_date
 		#puts @item.time # ==> 2000-01-01 10:15:00 UTC
 
 

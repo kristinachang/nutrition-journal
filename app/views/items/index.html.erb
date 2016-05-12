@@ -53,20 +53,21 @@
 			<br>
 
 			<% @items.each do |item| %>
-			<% if @item.date == @daily.date %>
-				<p>Time: <%= item.time %></p>
-				<p>Food Item: <%= item.name %>
-					<button><%= link_to 'Show', user_daily_item_path(current_user, @daily, item) %></button>
-					<button><%= link_to 'Edit', edit_user_daily_item_path(current_user, @daily, item) %></button>
-					<button><%= link_to 'Destroy', user_daily_item_path(current_user, @daily, item), method: :delete, data: {confirm: 'Are you sure?'} %>
-					</button>
-				</p>
-				<p>Calories: <%= item.kcal %> kcal</p>
-				<p>Protein: <%= item.protein %> g</p>
-				<p>Carbs: <%= item.carb %> g</p>
-				<p>Fat: <%= item.fat %> g</p>
-			<br>
-			<% end %>
+				<% if item.date == @daily.date %>
+					<!-- <p>Date Eaten: <%= item.date %></p> -->
+					<p>Time Eaten: <%= item.time.strftime("%H:%M") %></p> 
+					<p>Food Item: <%= item.name %>
+						<button><%= link_to 'Show', user_daily_item_path(current_user, @daily, item) %></button>
+						<button><%= link_to 'Edit', edit_user_daily_item_path(current_user, @daily, item) %></button>
+						<button><%= link_to 'Destroy', user_daily_item_path(current_user, @daily, item), method: :delete, data: {confirm: 'Are you sure?'} %>
+						</button>
+					</p>
+					<p>Calories: <%= item.kcal %> kcal</p>
+					<p>Protein: <%= item.protein %> g</p>
+					<p>Carbs: <%= item.carb %> g</p>
+					<p>Fat: <%= item.fat %> g</p>
+					<br>
+				<% end %>
 			<% end %>
 
 		</div> <!-- end .container -->	
