@@ -56,36 +56,36 @@ class ItemsController < ApplicationController
 		#puts @item.time # ==> 2000-01-01 10:15:00 UTC
 
 	 #    Add the following when implementing search function on /new.
-	 #    if params[:ndbno].present?
-	 #      resp = Typhoeus.get(
-	 #        "http://api.nal.usda.gov/usda/ndb/reports",
-	 #        params: {
-	 #        format: "json",
-	 #        ndbno: params[:ndbno],
-	 #        type: "b",
-	 #        api_key: "bT0Q1R0Js9aaOsjTR9ro6Oax1y21Wg2J8fmr74Vc"
-	 #        }
-	 #      )
-	 #      @food = JSON.parse(resp.body)["report"]
+	    if item_params[:ndbno].present?
+	      resp = Typhoeus.get(
+	        "http://api.nal.usda.gov/usda/ndb/reports",
+	        params: {
+	        format: "json",
+	        ndbno: item_params[:ndbno],
+	        type: "b",
+	        api_key: "bT0Q1R0Js9aaOsjTR9ro6Oax1y21Wg2J8fmr74Vc"
+	        }
+	      )
+	      @food = JSON.parse(resp.body)["report"]
+# byebug
+	      # @item = @daily.items.new (this line would create a new item instead of updating the current one)
 
-	 #      # @item = @daily.items.new (this line would create a new item instead of updating the current one)
+	      # @item.name = @food["food"]["name"]
+	      # @item.ndbno = params[:ndbno]
+	      @item.kcal = @food["food"]["nutrients"][1]["measures"][0]["value"]
+	      @item.protein = @food["food"]["nutrients"][2]["measures"][0]["value"]
+	      @item.fat = @food["food"]["nutrients"][3]["measures"][0]["value"]
+	      @item.carb = @food["food"]["nutrients"][4]["measures"][0]["value"]
 
-	 #      @item.name = @food["food"]["name"]
-	 #      @item.ndbno = params[:ndbno]
-	 #      @item.kcal = @food["food"]["nutrients"][1]["measures"][0]["value"]
-	 #      @item.protein = @food["food"]["nutrients"][2]["measures"][0]["value"]
-	 #      @item.fat = @food["food"]["nutrients"][3]["measures"][0]["value"]
-	 #      @item.carb = @food["food"]["nutrients"][4]["measures"][0]["value"]
-
-	 #      @item.save
+	    #   @item.save
 	      
-	 #      redirect_to user_daily_item_path(current_user, @daily, @item)
-	 #    end
+	    #   redirect_to user_daily_item_path(current_user, @daily, @item)
+	    end
 
 		if @item.save
 			redirect_to user_daily_item_path(current_user, @daily, @item)
 		else
-			render 'new'
+			render 'edit'
 		end
 	end
 
@@ -103,7 +103,7 @@ class ItemsController < ApplicationController
 	          format: "json",
 	          q: search,
 	          sort: "n",
-	          max: 30,
+	          max: 100,
 	          offset: 0,
 	          api_key: "bT0Q1R0Js9aaOsjTR9ro6Oax1y21Wg2J8fmr74Vc"
 	          }

@@ -16,31 +16,37 @@
   <% end %>
 
   <p>
+    <%= f.label :date  %>:
+    <br>
   	<%= f.date_field :date  %>
-  	<br>
-  	<%= f.label :date  %>
   </p>
 
   <p>
+    <%= f.label :time  %>:
+    <br>
     <%= f.time_field :time  %>
-    <br>
-    <%= f.label :time  %>
   </p>
 
   <p>
-    <%= f.number_field :mood %>
+    <%= f.label :mood %>:
     <br>
-    <%= f.label :mood %>
+    <%= f.number_field :mood %>
   </p>
   
   <p>
-    <%= f.text_field :notes %>
+    <%= f.label :notes %>:
     <br>
-    <%= f.label :notes %>
+    <%= f.text_field :notes %>
   </p>
+
+  <div>
+    <ul id="selectedResults">
+    </ul>
+  </div>
+
 
   <p>
     <%= f.submit %>
-  </p>
+  </p> 
  
 <% end %>

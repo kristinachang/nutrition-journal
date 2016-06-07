@@ -45,75 +45,32 @@
 			</div> <!-- end .nav-container -->
 		</div> <!-- end .navbar -->
 
-		<!-- Jumbotron -->
+		<!-- Form Content -->
 		<div class="container">
-			<div class="jumbotron">
-				<h3>Add New Item</h3>
-				<br>
-				<%= render 'form' %>
-				<br>
-				<br>
-				<!-- <p>
-					<%= form_for [current_user, @daily, @item] do %>
-					<%= time_field_tag :time %>
-  					<br>
-  					<%= label_tag :time %>
-  					<% end %>
-				</p> -->
+			<h3>Add New Item</h3>
+			<br>
+			<%= render 'form' %>
+			<br>
+			
+			<br>
+			<p>
+		    <%= form_tag usdasearch_path, method: :get, remote: true do %>
+		      <%= label_tag(:q, "Search for food:") %> <br>
+		      <%= text_field_tag(:q) %>
+		      <%= submit_tag("Search") %>
+		    <% end %>
+			</p> 
+			<div id="searchResults"></div>
 
-				<!-- <p>
-					<%= form_for [current_user, @daily, @item] do %>
-					<%= number_field_tag :mood %>
-  					<br>
-  					<%= label_tag :mood %>
-  					<% end %>
-				</p> -->
 
-				<!-- <p>
-					<%= form_for [current_user, @daily, @item] do %>
-					<%= text_field_tag :notes %>
-  					<br>
-  					<%= label_tag :notes %>
-  					<% end %>
-				</p> -->
+			<p><a href="/users/:user_id/dailies">Back to Calendar</a></p>
+			<p><a href="/users/index">Back to My Dashboard</a></p>
+			<br>
+			<form method="POST" action="/logout?_method=DELETE">
+				<button>Logout</button>
+			</form>
 
-				<!-- <p>
-				    <%= form_for new_user_daily_item_path, :method => 'get' do %>
-				      <%= label_tag(:q, "Search for food:") %> <br>
-				      <%= text_field_tag(:q) %>
-				      <%= submit_tag("Search") %>
-				    <% end %>
-				</p> -->
-
-				<!-- <p>
-					<% if @foods.present? %>
-					<table>
-						<% @foods.each do |f| %>
-							<tr>
-								<td>
-									<%= f["name"] %>
-								</td>
-								<td>
-									<%= form_for [current_user, @daily, @item] do %>
-									  <%= hidden_field(nil, :ndbno, value: f["ndbno"]) %>
-									  <%= submit_tag("Select This Item") %>
-									<% end %>
-								</td>
-							</tr>
-						<% end %>
-					</table>
-					<% end %>
-				</p> -->
-
-				<p><a href="/users/:user_id/dailies">Back to Calendar</a></p>
-				<p><a href="/users/index">Back to My Dashboard</a></p>
-				<br>
-				<form method="POST" action="/logout?_method=DELETE">
-					<button>Logout</button>
-				</form>
-			</div> <!-- end .jumbotron -->
 		</div> <!-- end .container -->
-
 
 		<!-- Footer -->
 		<div class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">

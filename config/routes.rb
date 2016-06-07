@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get '/', to: 'site#index', as: 'home'
   get '/about', to: 'site#about', as: 'about'
   get '/contact', to: 'site#contact', as: 'contact'
+  get '/usdasearch', to: 'usda#search'
 
   resource :calendar, only: [:show], controller: :calendar
   root to: 'users#show'

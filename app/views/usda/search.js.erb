@@ -1,0 +1,6 @@
+$('#searchResults').html("<%= j render partial: 'search_results', locals: {foods: @foods} %>");
+$('.addItem').click(function(event){
+	$('#selectedResults').append("<li>" + $(this).attr('data-food') + "<input type='hidden' name='item[name]' id='item_name' value='" + $(this).attr('data-food') + "'/><input type='hidden' name='item[ndbno]' id='item_ndbno' value='" + $(this).attr('data-ndbno') + "'/></li>");
+	console.log($(this).attr('data-food'));
+	// $("#item_name").value = $(this).attr('data-food')
+});

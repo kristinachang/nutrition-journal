@@ -1,0 +1,37 @@
+<% foods.each do |food| %>
+	<div id="itemInstance">
+		<!-- <input type="checkbox" class="checker" id="checkbox"> -->
+		<!-- <button class="button" type="button" id="addItem">Add:</button> -->
+		<%= submit_tag "Add", :class => "addItem", :data => {food: food["name"], ndbno: food["ndbno"]}%>
+  	<%= food["name"] %>
+  </div>
+<% end %>
+
+
+<script>
+	// $('#addItem').click(function(){
+	// 	$('#selectedResults').append("<%= foods %>");
+	// 	console.log("hi!");
+	// });
+
+ //  var fooditem = document.getElementById("q").value;
+	// var usdaURL = "http://api.nal.usda.gov/usda/ndb/search?format=json&"+"q="+fooditem+"&sort=n&max=100&offset=0&api_key=bT0Q1R0Js9aaOsjTR9ro6Oax1y21Wg2J8fmr74Vc";
+
+	// $.getJSON(usdaURL, function(data) {
+	// 	//console.log(data);
+	// 	var items = data.list.item;
+	// 	//console.log(items);
+	// 	var name = items[0].name;
+	// 	console.log(name);
+	// 	var ndbno = items[0].ndbno;
+	// 	console.log(ndbno);
+
+	// 	var displayBox = document.getElementById("resultsBox");
+	// 	displayBox.value = displayBox.value + (ndbno + ": " + name + "\n");
+
+
+	// })
+	// $(function() {
+	// 	var display = document.getElementById("resultP");
+
+</script>
