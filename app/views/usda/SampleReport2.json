@@ -1,0 +1,89 @@
+// 20160610015241
+// http://api.nal.usda.gov/usda/ndb/reports/?ndbno=45001496&type=f&format=json&api_key=DEMO_KEY
+
+{
+  "report": {
+    "sr": "28",
+    "type": "Full",
+    "food": {
+      "ndbno": "45001496",
+      "name": "AMY'S, LIGHT & LEAN, QUINOA & BLACK BEANS WITH BUTTERNUT SQUASH & CHARD, UPC: 042272009022",
+      "fg": "Branded Food Products Database",
+      "manu": "AMY'S",
+      "nutrients": [
+        {
+          "nutrient_id": 208,
+          "name": "Energy",
+          "group": "Proximates",
+          "unit": "kcal",
+          "value": 106.0,
+          "sourcecode": "",
+          "dp": 1,
+          "se": "",
+          "measures": [
+            {
+              "label": "serving",
+              "eqv": 227.0,
+              "qty": 1.0,
+              "value": 241.0
+            }
+          ]
+        },
+        {
+          "nutrient_id": 203,
+          "name": "Protein",
+          "group": "Proximates",
+          "unit": "g",
+          "value": 4.41,
+          "sourcecode": "",
+          "dp": 1,
+          "se": "",
+          "measures": [
+            {
+              "label": "serving",
+              "eqv": 227.0,
+              "qty": 1.0,
+              "value": 10.01
+            }
+          ]
+        },
+        {
+          "nutrient_id": 204,
+          "name": "Total lipid (fat)",
+          "group": "Proximates",
+          "unit": "g",
+          "value": 2.2,
+          "sourcecode": "",
+          "dp": 1,
+          "se": "",
+          "measures": [
+            {
+              "label": "serving",
+              "eqv": 227.0,
+              "qty": 1.0,
+              "value": 4.99
+            }
+          ]
+        },
+        {
+          "nutrient_id": 205,
+          "name": "Carbohydrate, by difference",
+          "group": "Proximates",
+          "unit": "g",
+          "value": 16.74,
+          "sourcecode": "",
+          "dp": 1,
+          "se": "",
+          "measures": [
+            {
+              "label": "serving",
+              "eqv": 227.0,
+              "qty": 1.0,
+              "value": 38.0
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

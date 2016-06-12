@@ -1,0 +1,143 @@
+// 20160610015101
+// http://api.nal.usda.gov/usda/ndb/reports/?ndbno=21237&type=f&format=json&api_key=DEMO_KEY
+
+{
+  "report": {
+    "sr": "28",
+    "type": "Full",
+    "food": {
+      "ndbno": "21237",
+      "name": "McDONALD'S, BIG MAC",
+      "fg": "Fast Foods",
+      "manu": "McDonald's Corporation",
+      "nutrients": [
+        {
+          "nutrient_id": 255,
+          "name": "Water",
+          "group": "Proximates",
+          "unit": "g",
+          "value": 51.3,
+          "sourcecode": "",
+          "dp": "",
+          "se": "",
+          "measures": [
+            {
+              "label": "item 7.6 oz",
+              "eqv": 219.0,
+              "qty": 1.0,
+              "value": 112.35
+            }
+          ]
+        },
+        {
+          "nutrient_id": 208,
+          "name": "Energy",
+          "group": "Proximates",
+          "unit": "kcal",
+          "value": 257.0,
+          "sourcecode": "",
+          "dp": "",
+          "se": "",
+          "measures": [
+            {
+              "label": "item 7.6 oz",
+              "eqv": 219.0,
+              "qty": 1.0,
+              "value": 563.0
+            }
+          ]
+        },
+        {
+          "nutrient_id": 268,
+          "name": "Energy",
+          "group": "Proximates",
+          "unit": "kJ",
+          "value": 1076.0,
+          "sourcecode": "",
+          "dp": "",
+          "se": "",
+          "measures": [
+            {
+              "label": "item 7.6 oz",
+              "eqv": 219.0,
+              "qty": 1.0,
+              "value": 2356.0
+            }
+          ]
+        },
+        {
+          "nutrient_id": 203,
+          "name": "Protein",
+          "group": "Proximates",
+          "unit": "g",
+          "value": 11.82,
+          "sourcecode": "",
+          "dp": "",
+          "se": "",
+          "measures": [
+            {
+              "label": "item 7.6 oz",
+              "eqv": 219.0,
+              "qty": 1.0,
+              "value": 25.89
+            }
+          ]
+        },
+        {
+          "nutrient_id": 204,
+          "name": "Total lipid (fat)",
+          "group": "Proximates",
+          "unit": "g",
+          "value": 14.96,
+          "sourcecode": "",
+          "dp": "",
+          "se": "",
+          "measures": [
+            {
+              "label": "item 7.6 oz",
+              "eqv": 219.0,
+              "qty": 1.0,
+              "value": 32.76
+            }
+          ]
+        },
+        {
+          "nutrient_id": 207,
+          "name": "Ash",
+          "group": "Proximates",
+          "unit": "g",
+          "value": 1.87,
+          "sourcecode": "",
+          "dp": "",
+          "se": "",
+          "measures": [
+            {
+              "label": "item 7.6 oz",
+              "eqv": 219.0,
+              "qty": 1.0,
+              "value": 4.1
+            }
+          ]
+        },
+        {
+          "nutrient_id": 205,
+          "name": "Carbohydrate, by difference",
+          "group": "Proximates",
+          "unit": "g",
+          "value": 20.08,
+          "sourcecode": "",
+          "dp": "",
+          "se": "",
+          "measures": [
+            {
+              "label": "item 7.6 oz",
+              "eqv": 219.0,
+              "qty": 1.0,
+              "value": 43.98
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

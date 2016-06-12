@@ -6,7 +6,7 @@ USERS show.html.erb
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>My Dashboard</title>
+		<title></title>
 
 		<!-- Bootstrap core CSS -->
     	<!-- <link type="text/css" rel="stylesheet" href="/stylesheets/bootstrap.min.css"> -->
@@ -33,7 +33,7 @@ USERS show.html.erb
 				</div> <!-- end .navbar-header -->
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav navbar-right">
-	        	<li class="Index"><%=link_to"Home", root_path  %></li>
+	        	<li class="Index"><%=link_to "Home", root_path %></li>
 						<li><a href="/about">About</a></li>
 						<li><a href="/contact">Contact</a></li>
 						<%if (current_user)  %>
@@ -47,31 +47,7 @@ USERS show.html.erb
 			</div> <!-- end .nav-container -->
 		</div> <!-- end .navbar -->
 
-		<!-- Jumbotron -->
-		<div class="container">
-			<div class="jumbotron">
-				<h3>Dashboard</h3>
-				<br>
-				<p><a href="/users/:user_id/dailies">View All My Entries</a></p>
-				<p><a href="/users/:user_id/dailies/new">Add A New Entry</a></p>
-				<br>
-				<br><br>
-				<canvas id="canvasBar" width="400" height="300"></canvas>
 
-				<br><br>
-				<canvas id="canvasLine" width="400" height="300"></canvas>
-
-				<br><br>
-				<canvas id="canvasPie" width="400" height="200"></canvas>
-
-				<canvas id="canvasDoughnut" width="300" height="200"></canvas>
-				<br><br>
-
-				<form method="POST" action="/logout?_method=DELETE">
-					<button>Logout</button>
-				</form>
-			</div> <!-- end .jumbotron -->
-		</div> <!-- end .container -->
 
 		<!-- Footer -->
 		<div class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">

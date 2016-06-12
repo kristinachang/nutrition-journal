@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>All My Entries</title>
+		<title>My Dashboard</title>
 
 		<!-- Bootstrap core CSS -->
     	<!-- <link type="text/css" rel="stylesheet" href="/stylesheets/bootstrap.min.css"> -->
@@ -45,10 +45,20 @@
 			</div> <!-- end .nav-container -->
 		</div> <!-- end .navbar -->
 
-		<!-- Jumbotron -->
-		<div class="container">
+		<div class="container-fluid">
+			<h3>My Dashboard</h3>
+			<br>
+			<div class="row">
+        <div class="col-xs-6">
+          <h4>Graph of Recorded Mood:</h4>
+          <!-- d3 lineChart -->
+          <div id="moodGraph"></div>
+        </div>
+    	</div> <!-- end .row -->
+    	<br>
+    	<!-- Jumbotron -->
 			<div class="jumbotron-calendar">
-				<h3>All Entries By Date</h3>
+				<h4>All Entries By Date</h4>
 				<br>
 				<div class="row">
 				  <div class="col-md-12 text-center">
@@ -66,7 +76,7 @@
 				<div class="row text-center">
 				  <div class="col-md-12 text-center">
 				    <%= calendar @date do |date| %>
-				      <%= date.day %>  
+				      <%= link_to date.day, new_user_daily_path(current_user) %>  
 				     	<br>
 						  <% @dailies_by_date.each do |daily| %>
 							  <% if daily.date == date %>
@@ -80,8 +90,6 @@
 
 				<br>
 					<a href="/users/:user_id/dailies/new">Start A New Daily</a>
-				<br>
-					<a href="/users/index">Back to My Dashboard</a> <!-- users/show.html.erb -->
 				<br><br>
 					
 				<form method="POST" action="/logout?_method=DELETE">

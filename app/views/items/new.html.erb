@@ -51,8 +51,6 @@
 			<br>
 			<%= render 'form' %>
 			<br>
-			
-			<br>
 			<p>
 		    <%= form_tag usdasearch_path, method: :get, remote: true do %>
 		      <%= label_tag(:q, "Search for food:") %> <br>
@@ -63,8 +61,7 @@
 			<div id="searchResults"></div>
 
 
-			<p><a href="/users/:user_id/dailies">Back to Calendar</a></p>
-			<p><a href="/users/index">Back to My Dashboard</a></p>
+			<p><a href="/users/:user_id/dailies">Back to My Dashboard</a></p>
 			<br>
 			<form method="POST" action="/logout?_method=DELETE">
 				<button>Logout</button>

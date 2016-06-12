@@ -16,8 +16,6 @@ class ItemsController < ApplicationController
 		#@item.time = item_time
 		#@item.date = item_date
 		#puts @item.time # ==> 2000-01-01 10:15:00 UTC
-
-
 	end
 
 	def new
@@ -55,35 +53,28 @@ class ItemsController < ApplicationController
 		@item.time = time
 		#puts @item.time # ==> 2000-01-01 10:15:00 UTC
 
-	 #    Add the following when implementing search function on /new.
-	    if item_params[:ndbno].present?
-	      resp = Typhoeus.get(
-	        "http://api.nal.usda.gov/usda/ndb/reports",
-	        params: {
-	        format: "json",
-	        ndbno: item_params[:ndbno],
-	        type: "b",
-	        api_key: "bT0Q1R0Js9aaOsjTR9ro6Oax1y21Wg2J8fmr74Vc"
-	        }
-	      )
-	      @food = JSON.parse(resp.body)["report"]
+    if item_params[:ndbno].present?
+      resp = Typhoeus.get(
+        "http://api.nal.usda.gov/usda/ndb/reports",
+        params: {
+        format: "json",
+        ndbno: item_params[:ndbno],
+        type: "b",
+        api_key: "bT0Q1R0Js9aaOsjTR9ro6Oax1y21Wg2J8fmr74Vc"
+        }
+      )
+      @food = JSON.parse(resp.body)["report"]
 # byebug
-	      # @item = @daily.items.new (this line would create a new item instead of updating the current one)
-
-	      # @item.name = @food["food"]["name"]
-	      # @item.ndbno = params[:ndbno]
-	      @item.kcal = @food["food"]["nutrients"][1]["measures"][0]["value"]
-	      @item.protein = @food["food"]["nutrients"][2]["measures"][0]["value"]
-	      @item.fat = @food["food"]["nutrients"][3]["measures"][0]["value"]
-	      @item.carb = @food["food"]["nutrients"][4]["measures"][0]["value"]
-
-	    #   @item.save
-	      
-	    #   redirect_to user_daily_item_path(current_user, @daily, @item)
-	    end
+      # @item.name = @food["food"]["name"]
+      # @item.ndbno = params[:ndbno]
+      @item.kcal = @food["food"]["nutrients"][1]["measures"][0]["value"]
+      @item.protein = @food["food"]["nutrients"][2]["measures"][0]["value"]
+      @item.fat = @food["food"]["nutrients"][3]["measures"][0]["value"]
+      @item.carb = @food["food"]["nutrients"][4]["measures"][0]["value"]
+    end
 
 		if @item.save
-			redirect_to user_daily_item_path(current_user, @daily, @item)
+			redirect_to user_daily_path(current_user, @daily, @item)
 		else
 			render 'edit'
 		end
@@ -137,8 +128,6 @@ class ItemsController < ApplicationController
 	        }
 	      )
 	      @food = JSON.parse(resp.body)["report"]
-
-	      # @item = @daily.items.new (this line would create a new item instead of updating the current one)
 
 	      @item.name = @food["food"]["name"]
 	      @item.ndbno = params[:ndbno]
