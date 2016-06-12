@@ -60,7 +60,7 @@
 			</p> 
 			<div id="searchResults"></div>
 
-
+			<%= link_to "Back to Daily", user_daily_path(current_user, @daily) %>
 			<p><a href="/users/:user_id/dailies">Back to My Dashboard</a></p>
 			<br>
 			<form method="POST" action="/logout?_method=DELETE">
