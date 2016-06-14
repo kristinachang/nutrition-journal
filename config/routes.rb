@@ -1,16 +1,18 @@
 Rails.application.routes.draw do
   # get 'calendar/show'
 
-  devise_for :users
+  devise_for :users do
+    get "/users/sign_out" => "devise/sessions#destroy", :as => :destroy_user_session
+  end
 
+  root 'site#index'
   #root to: 'site#index'
-  get '/', to: 'site#index', as: 'home'
+  # get '/', to: 'site#index', as: 'home'
   get '/about', to: 'site#about', as: 'about'
   get '/contact', to: 'site#contact', as: 'contact'
   get '/usdasearch', to: 'usda#search'
 
   resource :calendar, only: [:show], controller: :calendar
-  root to: 'users#show'
 
   resources :users do
     resources :profiles

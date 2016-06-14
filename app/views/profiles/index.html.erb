@@ -33,15 +33,17 @@ PROFILES index.html.erb
 				</div> <!-- end .navbar-header -->
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav navbar-right">
-	        	<li class="Index"><%=link_to"Home", root_path  %></li>
+	        	<li><%=link_to"Home", root_path %></li>
 						<li><a href="/about">About</a></li>
 						<li><a href="/contact">Contact</a></li>
-						<%if (current_user)  %>
-		          <li class = "Profile"> <%= link_to 'My Profile', user_profiles_path(current_user) %> </li>
-		          <li class = "SignOut"><%= link_to 'Sign out', destroy_user_session_path %> </li>
-	        	<%else  %>
-	          	<li class="SignUp"><%= link_to 'Sign up', new_user_registration_path  %></li>
-	        	<% end  %>
+						<% if (current_user) %>
+		          <!-- <li class = "Profile"> <%= link_to 'My Profile', user_profiles_path(current_user) %> </li> -->
+		          <li><%= link_to 'My Dashboard', user_dailies_path(current_user) %></li>
+		          <li><%= link_to 'Sign out', destroy_user_session_path %></li>
+	        	<% else %>
+	        		<li><%= link_to 'Log In', new_user_session_path %></li>
+	          	<li><%= link_to 'Sign up', new_user_registration_path %></li>
+	        	<% end %>
 					</ul>
 				</div> <!-- end .navbar-collapse -->
 			</div> <!-- end .nav-container -->

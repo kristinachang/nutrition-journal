@@ -15,4 +15,4 @@
 //= require turbolinks
 //= require_tree .
 //= require d3pie.min
-
+//= require Chart
