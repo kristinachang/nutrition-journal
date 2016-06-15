@@ -48,14 +48,13 @@
 		</div> <!-- end .navbar -->
 
 		<div class="container-fluid">
-			<h3>My Dashboard</h3>
+			<!-- <h3>My Dashboard</h3> -->
 			<br>
 			<div class="row">
         <div class="col-xs-6">
           <h4>Graph of Recorded Mood:</h4>
-          <!-- d3 lineChart -->
-          <div id="moodGraph"></div>
-          <canvas id="canvasLine" width="650" height="300"></canvas>
+          <!-- Chart.js lineChart -->
+          <%= content_tag 'canvas', '', id: "canvasLine", width: "650", height: '300', data: {mood: (Daily.all.map &:mood), date: (Daily.all.map &:date)} %>
         </div>
     	</div> <!-- end .row -->
     	<br>
