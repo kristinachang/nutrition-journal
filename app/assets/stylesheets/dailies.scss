@@ -2,10 +2,18 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.dailies {
+	padding-bottom: 75px;
+}
+
 .jumbotron-calendar {
   text-align: center;
   background-color: #fff;
   margin-bottom: 50px;
+}
+
+h4 {
+	text-align: center;
 }
 
 th {
