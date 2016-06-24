@@ -30,7 +30,7 @@
   <p>
     <%= f.label :mood %>:
     <br>
-    <%= f.number_field :mood %>
+    <%= f.number_field :mood, min: 1, max: 5 %>
   </p>
   
   <p>

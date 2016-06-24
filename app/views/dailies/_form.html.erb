@@ -22,7 +22,7 @@
   </p>
   
   <p>
-    <%= f.number_field :mood %>
+    <%= f.number_field :mood, min: 1, max: 5 %>
     <br>
     <%= f.label :mood %>
   </p>
