@@ -32,25 +32,26 @@
 <body class="items">
 	<div class="container-fluid">
 		<div class="itemnew-content">
-			<h3>Add New Item</h3>
+			<h3 class='form-font'>Add New Item</h3>
 			<br>
 			<%= render 'form' %>
 			<br>
 			<p>
 		    <%= form_tag usdasearch_path, method: :get, remote: true do %>
-		      <%= label_tag(:q, "Search for food:") %> <br>
+		      <%= label_tag(:q, "Search for food:", { class: "text"}) %> <br>
 		      <%= text_field_tag(:q) %>
 		      <%= submit_tag("Search") %>
 		    <% end %>
 			</p> 
 			<div id="searchResults"></div>
-
+			
+			<br>
 			<%= link_to "Back to Daily", user_daily_path(current_user, @daily) %>
 			<p><a href="/users/:user_id/dailies">Back to My Dashboard</a></p>
 			<br>
-			<form method="POST" action="/logout?_method=DELETE">
+			<!-- <form method="POST" action="/logout?_method=DELETE">
 				<button>Logout</button>
-			</form>
+			</form> -->
 		</div> <!-- end .itemnew-content -->
 	</div> <!-- end .container-fluid -->
 </body>

@@ -16,36 +16,40 @@
   <% end %>
 
   <p>
-    <%= f.label :date  %>:
+    <%= f.label :date, { class: "text"}%>
     <br>
-  	<%= f.date_field :date  %>
+  	<%= f.date_field :date %>
   </p>
-
+  <br>
   <p>
-    <%= f.label :time  %>:
+    <%= f.label :time, { class: "text"} %>
     <br>
-    <%= f.time_field :time  %>
+    <%= f.time_field :time %>
   </p>
-
+  <br>
   <p>
-    <%= f.label :mood %>:
+    <%= f.label :mood, "Mood: 1 - 5, 5 being best", { class: "text"} %>
     <br>
     <%= f.number_field :mood, min: 1, max: 5 %>
   </p>
-  
+  <br>
   <p>
-    <%= f.label :notes %>:
+    <%= f.label :notes, { class: "text"} %>
     <br>
     <%= f.text_field :notes %>
   </p>
-
-  <div>
-    <ul id="selectedResults">
-    </ul>
+  <br>
+  <div class="text">
+    Use the Search below to find food. 
+    <br>
+    Selected items from your search will be displayed here: 
   </div>
+    <br>
+    <div id="selectedResults"></div>
 
+  <br><br>
   <p>
-    <%= f.submit %>
+    <%= f.submit "Save This Item", class: 'btn btn-primary' %>
   </p> 
  
 <% end %>

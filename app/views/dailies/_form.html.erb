@@ -16,25 +16,25 @@
   <% end %>
 
   <p>
+    <%= f.label :date %>
+    <br>
     <%= f.date_field :date %>
-    <br>
-    <%= f.label :date %>   
   </p>
-  
+  <br>
   <p>
-    <%= f.number_field :mood, min: 1, max: 5 %>
+    <%= f.label :mood, "Mood: 1 - 5, 5 being best" %>
     <br>
-    <%= f.label :mood %>
+    <%= f.number_field :mood, min: 1, max: 5, html: { class: "text"} %>
   </p>
-  
+  <br>
   <p>
-    <%= f.text_field :notes %>
-    <br>
     <%= f.label :notes %>
+    <br>
+    <%= f.text_field :notes %>
   </p>
-
+  <br>
   <p>
-    <%= f.submit %>
+    <%= f.submit class: 'btn btn-primary' %>
   </p>
  
 <% end %>
